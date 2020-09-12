@@ -1,4 +1,4 @@
-package com.axion.tests;
+package com.axiom.tests;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;

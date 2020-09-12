@@ -6,8 +6,8 @@
 	</listeners>
   <test  name="Test">
     <classes>
-      <class name="com.axion.tests.TestScenario1"/>      
-      <class name="com.axion.tests.TestScenario2"/>
+      <class name="com.axiom.tests.TestScenario1"/>      
+      <class name="com.axiom.tests.TestScenario2"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -1,4 +1,4 @@
-package com.axion.tests;
+package com.axiom.tests;
 import static org.hamcrest.CoreMatchers.equalTo;
 import java.io.IOException;
 import java.util.HashMap;
