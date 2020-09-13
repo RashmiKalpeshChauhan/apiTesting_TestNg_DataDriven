@@ -46,7 +46,7 @@ public class TestScenario2 {
 		Assert.assertEquals(response.jsonPath().getString("data.profile_image"), "");		
 		Assert.assertEquals(response.jsonPath().getString("message"), "Successfully! Record has been fetched.");	
 	}
-	@Test(dataProvider = "Excel", dataProviderClass = DataGenerators.class,description="Validate status code, message, response data")	
+	@Test(dataProvider = "Excel", dataProviderClass = DataGenerators.class,description="Validate json schema")	
 	
 	public void validateJsonSchema(HashMap<String,String>testData) {
 		EmployId=testData.get("EmployeeId");
