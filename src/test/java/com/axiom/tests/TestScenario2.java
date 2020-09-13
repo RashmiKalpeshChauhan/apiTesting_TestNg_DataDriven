@@ -10,6 +10,7 @@ import com.axiom.utils.PropertyManager;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 public class TestScenario2 {	
 	String EmployId=null;
@@ -44,6 +45,13 @@ public class TestScenario2 {
 		Assert.assertEquals(response.jsonPath().getInt("data.employee_age"), 63);
 		Assert.assertEquals(response.jsonPath().getString("data.profile_image"), "");		
 		Assert.assertEquals(response.jsonPath().getString("message"), "Successfully! Record has been fetched.");	
+	}
+	@Test
+	public void validateJsonSchema() {
+		given(). get("/v1/employee/2")
+         .then()
+             .assertThat().
+                 body(matchesJsonSchemaInClasspath("EmploymentSchema.json"));
 	}
 
 }
