@@ -46,9 +46,11 @@ public class TestScenario2 {
 		Assert.assertEquals(response.jsonPath().getString("data.profile_image"), "");		
 		Assert.assertEquals(response.jsonPath().getString("message"), "Successfully! Record has been fetched.");	
 	}
-	@Test
-	public void validateJsonSchema() {
-		given(). get("/v1/employee/2")
+	@Test(dataProvider = "Excel", dataProviderClass = DataGenerators.class,description="Validate status code, message, response data")	
+	
+	public void validateJsonSchema(HashMap<String,String>testData) {
+		EmployId=testData.get("EmployeeId");
+		given(). get("/v1/employee/"+EmployId+"")
          .then()
              .assertThat().
                  body(matchesJsonSchemaInClasspath("EmploymentSchema.json"));
