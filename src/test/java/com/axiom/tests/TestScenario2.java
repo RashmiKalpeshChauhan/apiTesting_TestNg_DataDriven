@@ -28,13 +28,13 @@ public class TestScenario2 {
 		EmployId=testData.get("EmployeeId");			
 		RestAssured.get("/v1/employee/"+EmployId+"").then().assertThat().statusCode(200);
 	}
-	
+
 	@Test(dataProvider = "Excel", dataProviderClass = DataGenerators.class,description="Validate message")
 	public void validateMessage(HashMap<String,String>testData) {
 		EmployId=testData.get("EmployeeId");
 		RestAssured.get("/v1/employee/"+EmployId+"").then().body("message",equalTo("Successfully! Record has been fetched."));
 	}
-	
+
 	@Test(dataProvider = "Excel", dataProviderClass = DataGenerators.class,description="Validate status code, message, response data")	
 	public void validateResponse(HashMap<String,String>testData) {
 		EmployId=testData.get("EmployeeId");
@@ -47,13 +47,12 @@ public class TestScenario2 {
 		Assert.assertEquals(response.jsonPath().getString("message"), "Successfully! Record has been fetched.");	
 	}
 	@Test(dataProvider = "Excel", dataProviderClass = DataGenerators.class,description="Validate json schema")	
-	
 	public void validateJsonSchema(HashMap<String,String>testData) {
 		EmployId=testData.get("EmployeeId");
 		given(). get("/v1/employee/"+EmployId+"")
-         .then()
-             .assertThat().
-                 body(matchesJsonSchemaInClasspath("EmploymentSchema.json"));
+		.then()
+		.assertThat().
+		body(matchesJsonSchemaInClasspath("EmploymentSchema.json"));
 	}
 
 }
